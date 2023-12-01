@@ -8,9 +8,15 @@ int main()
 	f.close();
 	ofstream g("alun.out");
 	// cerinta 1
-	g << (n1+n2)*(x/4) + n1*(x%4/2) - x/k << '\n';
+	int c = x/4, r = x%4;
+	int nr = (n1+n2)*c + n1*(r/2) - x/k;
+	g << nr << '\n';
 	// cerinta 2
-	g << y/(n1+n2)*4 + y%(n1+n2)/2*2;
+	c = y/(n1+n2), r = y%(n1+n2);
+	nr = c*4;
+	if (r > 0 && r <= n1) nr += 2;
+	else if (r > 0 && r > n1) nr += 4;
+	g << nr;
 	g.close();
 	return 0;
 }
